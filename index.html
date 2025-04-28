@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlywoodZone - Premium Plywood Showroom</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FFF8E7;
+        }
+        .brown-gradient {
+            background: linear-gradient(to right, #4A2C0A, #8B4513);
+        }
+        /* Wood grain texture for sections */
+        .section-bg {
+            background-image: url('https://via.placeholder.com/1920x1080?text=Wood+Grain+Texture');
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+        }
+        .section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 248, 231, 0.9);
+        }
+        .section-content {
+            position: relative;
+            z-index: 1;
+        }
+        /* Fade-in animation for product cards */
+        .product-card {
+            animation: fadeIn 0.5s ease-in;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #FFFFFF;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Hover effect for product cards */
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+        /* Hover effect for nav links */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #FFD700;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #FFD700;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        /* Stylish send button */
+        .send-btn {
+            background: linear-gradient(to right, #8B4513, #D2B48C);
+            color: #FFFFFF;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .send-btn:hover {
+            background: linear-gradient(to right, #6B3F0F, #FFD700);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        /* Book Now button */
+        .book-now-btn {
+            background: #A0522D;
+            color: #FFFFFF;
+            transition: background 0.3s ease, transform 0.2s ease;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .book-now-btn:hover {
+            background: #8B4513;
+            transform: translateY(-2px);
+        }
+        /* Input styling */
+        input, select {
+            border: 1px solid #D2B48C;
+            border-radius: 8px;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+            background: #FFF8E7;
+        }
+        input:focus, select:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+            outline: none;
+        }
+        /* Label styling */
+        label {
+            font-weight: 500;
+            color: #4A2C0A;
+        }
+        /* Logo styling */
+        .logo {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-3xl font-bold text-brown-800 logo">PlywoodZone</h1>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#home" class="nav-link text-brown-700 font-medium">Home</a>
+                    <a href="#products" class="nav-link text-brown-700 font-medium">Products</a>
+                    <a href="#appointment" class="nav-link text-brown-700 font-medium">Book Appointment</a>
+                    <a href="#contact" class="nav-link text-brown-700 font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="brown-gradient text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-4 animate-pulse">Welcome to PlywoodZone</h2>
+            <p class="text-lg mb-6 max-w-2xl mx-auto">Discover premium plywood for all your needs. Visit our showroom or book an appointment today!</p>
+            <a href="#appointment" class="book-now-btn px-6 py-3 rounded-full font-semibold">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-16 section-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-content">
+            <h2 class="text-3xl font-bold text-brown-800 mb-8 text-center">Our Products</h2>
+            <!-- Filters -->
+            <div class="mb-8 flex flex-wrap gap-4 justify-center">
+                <select id="typeFilter" class="border border-brown-300 rounded px-4 py-2">
+                    <option value="">All Types</option>
+                    <option value="Marine">Marine Plywood</option>
+                    <option value="Commercial">Commercial Plywood</option>
+                    <option value="Decorative">Decorative Plywood</option>
+                    <option value="Flexible">Flexible Plywood</option>
+                </select>
+                <select id="thicknessFilter" class="border border-brown-300 rounded px-4 py-2">
+                    <option value="">All Thickness</option>
+                    <option value="4mm">4mm</option>
+                    <option value="6mm">6mm</option>
+                    <option value="12mm">12mm</option>
+                    <option value="18mm">18mm</option>
+                </select>
+                <select id="brandFilter" class="border border-brown-300 rounded px-4 py-2">
+                    <option value="">All Brands</option>
+                    <option value="Century">Century</option>
+                    <option value="Greenply">Greenply</option>
+                    <option value="Kitply">Kitply</option>
+                    <option value="Archidply">Archidply</option>
+                </select>
+            </div>
+            <!-- Product Grid -->
+            <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Products will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Section -->
+    <section id="appointment" class="py-16 section-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-content">
+            <h2 class="text-3xl font-bold text-brown-800 mb-8 text-center">Book an Appointment</h2>
+            <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+                <div>
+                    <label for="name" class="block">Name</label>
+                    <input type="text" id="name" class="w-full mt-1" required>
+                </div>
+                <div class="mt-4">
+                    <label for="phone" class="block">Phone Number</label>
+                    <input type="tel" id="phone" class="w-full mt-1" required>
+                </div>
+                <div class="mt-4">
+                    <label for="date" class="block">Preferred Date</label>
+                    <input type="date" id="date" class="w-full mt-1" required>
+                </div>
+                <div class="mt-4">
+                    <label for="time" class="block">Preferred Time</label>
+                    <input type="time" id="time" class="w-full mt-1" required>
+                </div>
+                <button id="bookBtn" class="send-btn mt-6 w-full px-4 py-2 rounded-lg font-semibold">Send Appointment</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 section-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-content">
+            <h2 class="text-3xl font-bold text-brown-800 mb-8 text-center">Contact Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <p class="text-brown-700 mb-4">Reach out to us for any inquiries or to schedule a visit.</p>
+                    <p class="text-brown-700"><strong>Phone:</strong> +91 9925704442</p>
+                    <p class="text-brown-700"><strong>Email:</strong> info@plywoodzone.com</p>
+                    <p class="text-brown-700"><strong>Address:</strong> Plywood Zone, Sanada, Morbi</p>
+                </div>
+                <div>
+                    <!-- Google Map -->
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3678.0225484040036!2d70.84936417433824!3d22.81409982723307!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3959c94f00000001%3A0xc0b0c0b0c0b0c0b0!2sSanada%2C%20Morbi%2C%20Gujarat%20364292!5e0!3m2!1sen!2sin!4v1730123456789!5m2!1sen!2sin"
+                        width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brown-800 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">© 2025 PlywoodZone. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sample product data with real photos
+        const products = [
+            { id: 1, name: "Marine Plywood", type: "Marine", thickness: "18mm", brand: "Century", price: 2500, image: "https://images.unsplash.com/photo-1620241601975-cb6497c718d9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" },
+            { id: 2, name: "Commercial Plywood", type: "Commercial", thickness: "12mm", brand: "Greenply", price: 1500, image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" },
+            { id: 3, name: "Decorative Plywood", type: "Decorative", thickness: "6mm", brand: "Kitply", price: 2000, image: "https://images.unsplash.com/photo-1597077363603-566d81df3a9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" },
+            { id: 4, name: "Marine Plywood", type: "Marine", thickness: "12mm", brand: "Greenply", price: 2200, image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" },
+            { id: 5, name: "Flexible Plywood", type: "Flexible", thickness: "4mm", brand: "Archidply", price: 1800, image: "https://images.unsplash.com/photo-1582979512210-0c8b989f008f?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" },
+            { id: 6, name: "Commercial Plywood", type: "Commercial", thickness: "18mm", brand: "Century", price: 2000, image: "https://images.unsplash.com/photo-1600585153490-76fb20a0f2b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" },
+            { id: 7, name: "Decorative Plywood", type: "Decorative", thickness: "12mm", brand: "Greenply", price: 2400, image: "https://images.unsplash.com/photo-1618221710640-c0eaaa2adb49?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" },
+            { id: 8, name: "Marine Plywood", type: "Marine", thickness: "6mm", brand: "Kitply", price: 1900, image: "https://images.unsplash.com/photo-1600585152915-d208bec867a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80" },
+        ];
+
+        // Render products
+        function renderProducts(filteredProducts) {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const productCard = `
+                    <div class="product-card rounded-lg shadow-md overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-brown-800">${product.name}</h3>
+                            <p class="text-brown-600 text-sm">Type: ${product.type}</p>
+                            <p class="text-brown-600 text-sm">Thickness: ${product.thickness}</p>
+                            <p class="text-brown-600 text-sm">Brand: ${product.brand}</p>
+                            <p class="text-brown-800 font-bold mt-2">₹${product.price}</p>
+                        </div>
+                    </div>
+                `;
+                productGrid.innerHTML += productCard;
+            });
+        }
+
+        // Filter products
+        function filterProducts() {
+            const type = document.getElementById('typeFilter').value;
+            const thickness = document.getElementById('thicknessFilter').value;
+            const brand = document.getElementById('brandFilter').value;
+
+            const filteredProducts = products.filter(product => {
+                return (!type || product.type === type) &&
+                       (!thickness || product.thickness === thickness) &&
+                       (!brand || product.brand === brand);
+            });
+
+            renderProducts(filteredProducts);
+        }
+
+        // Event listeners for filters
+        document.getElementById('typeFilter').addEventListener('change', filterProducts);
+        document.getElementById('thicknessFilter').addEventListener('change', filterProducts);
+        document.getElementById('brandFilter').addEventListener('change', filterProducts);
+
+        // Initial render
+        renderProducts(products);
+
+        // Appointment booking
+        document.getElementById('bookBtn').addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+
+            if (name && phone && date && time) {
+                const message = `New Appointment Booking:%0AName: ${name}%0APhone: ${phone}%0ADate: ${date}%0ATime: ${time}`;
+                const whatsappUrl = `https://wa.me/9925704442?text=${message}`;
+                window.open(whatsappUrl, '_blank');
+                alert('Appointment details sent to WhatsApp!');
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+</body>
+</html>
