@@ -167,6 +167,37 @@
         .hero a:hover {
             background-color: #b38b59;
         }
+        .hero-section {
+  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}   
+
+        @media (max-width: 768px) {
+  .hero-section {
+    background-size: contain; /* Ensures the whole image is visible */
+    background-position: top center;
+    background-repeat: no-repeat;
+    height: 100vh;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+    padding: 0 20px;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+}
 
         /* Brands Section */
         .brands {
