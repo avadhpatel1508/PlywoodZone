@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plywood Zone - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #f5f0e1;
+            color: #2f2f2f;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #3c2f2f;
+            color: #fff;
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: #d4a373;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 1rem;
+            background-color: #fff;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #3c2f2f;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form label {
+            font-size: 1.1rem;
+            color: #3c2f2f;
+            font-weight: 400;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            padding: 0.75rem;
+            border: 1px solid #d4a373;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            border-color: #b38b59;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .contact-form button {
+            background-color: #d4a373;
+            color: #fff;
+            padding: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #b38b59;
+        }
+
+        .contact-form .error {
+            color: #e53e3e;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .form-message {
+            font-size: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.3rem;
+            text-align: center;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: #68d391;
+            color: #fff;
+        }
+
+        .form-message.error {
+            background-color: #f56565;
+            color: #fff;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            padding: 1.5rem;
+            background-color: #f5f0e1;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #3c2f2f;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-info a {
+            color: #d4a373;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Map Placeholder */
+        .map-placeholder {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .map-placeholder iframe {
+            width: 100%;
+            max-width: 600px;
+            height: 337.5px;
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Social Media Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: #3c2f2f;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #d4a373;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 4rem 1rem;
+            background-color: #f5f0e1;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #3c2f2f;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #d4a373;
+        }
+
+        .faq-item h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #3c2f2f;
+            cursor: pointer;
+            padding: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item h3::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            transition: transform 0.3s;
+        }
+
+        .faq-item h3.active::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-item p {
+            font-size: 1rem;
+            color: #4a5568;
+            padding: 0 1rem 1rem;
+            display: none;
+        }
+
+        .faq-item p.active {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #3c2f2f;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links a {
+            color: #d4a373;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact h2,
+            .faq h2 {
+                font-size: 2rem;
+            }
+
+            .contact-info h3 {
+                font-size: 1.5rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+            }
+
+            .map-placeholder iframe {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact h2,
+            .faq h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact-form input,
+            .contact-form select,
+            .contact-form textarea {
+                font-size: 0.9rem;
+                padding: 0.5rem;
+            }
+
+            .contact-form button {
+                font-size: 1rem;
+                padding: 0.75rem;
+            }
+
+            .social-links a {
+                font-size: 1.5rem;
+            }
+
+            .map-placeholder iframe {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Plywood Zone</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="contact-container">
+            <div>
+                <h2>Contact Us</h2>
+                <form class="contact-form" id="contactForm">
+                    <label for="name">Name *</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error" id="nameError">Please enter your name.</span>
+
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error" id="emailError">Please enter a valid email address.</span>
+
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" name="phone">
+
+                    <label for="subject">Subject *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="" disabled selected>Select a subject</option>
+                        <option value="order">Order Inquiry</option>
+                        <option value="product">Product Information</option>
+                        <option value="support">Customer Support</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span class="error" id="subjectError">Please select a subject.</span>
+
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                    <span class="error" id="messageError">Please enter your message.</span>
+
+                    <button type="submit">Send Message</button>
+                </form>
+                <div class="form-message" id="formMessage"></div>
+            </div>
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <p><strong>Address:</strong> 123 Timber Lane, Sanada, Morbi, Gujarat, India</p>
+                <p><strong>Phone:</strong> <a href="tel:+919876543210">+91 98765 43210</a></p>
+                <p><strong>Email:</strong> <a href="mailto:info@plywoodzone.com">info@plywoodzone.com</a></p>
+                <p><strong>Operating Hours:</strong></p>
+                <p>Monday-Saturday: 9:00 AM - 6:00 PM IST</p>
+                <p>Sunday: Closed</p>
+                <div class="social-links">
+                    <a href="https://facebook.com/plywoodzone" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://instagram.com/plywoodzone" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/plywoodzone" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="map-placeholder">
+            <h3>Find Our Showroom</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d812!2d70.8075893!3d22.792368!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39598b78ae2cd89d%3A0xc426d126e031a32b!2sPlywood%20zone!5e0!3m2!1sen!2s!4v1698765432100" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="faq-container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>How can I place an order? <i class="fas fa-angle-down"></i></h3>
+                <p>You can place an order by visiting our showroom in Sanada, Morbi, calling us at +91 98765 43210, or emailing info@plywoodzone.com with your requirements.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is your return policy? <i class="fas fa-angle-down"></i></h3>
+                <p>We accept returns within 30 days of purchase for unused products in original condition. Contact our customer service team for assistance.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do you offer bulk discounts? <i class="fas fa-angle-down"></i></h3>
+                <p>Yes, we offer competitive pricing for bulk orders. Please reach out to our sales team for a customized quote.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I visit the showroom? <i class="fas fa-angle-down"></i></h3>
+                <p>Absolutely! Our showroom at 123 Timber Lane, Sanada, Morbi, is open Monday to Saturday, 9:00 AM to 6:00 PM IST. We’d love to assist you in person.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p>© 2025 Plywood Zone. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission with mailto
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let isValid = true;
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const formMessage = document.getElementById('formMessage');
+
+            // Reset error messages and form message
+            document.querySelectorAll('.error').forEach(error => error.style.display = 'none');
+            formMessage.style.display = 'none';
+            formMessage.classList.remove('success', 'error');
+
+            // Validation
+            if (!name) {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            }
+            if (!email || !emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+            if (!subject) {
+                document.getElementById('subjectError').style.display = 'block';
+                isValid = false;
+            }
+            if (!message) {
+                document.getElementById('messageError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Construct mailto link
+                const emailSubject = encodeURIComponent(`Contact Form: ${subject}`);
+                const emailBody = encodeURIComponent(
+                    `Name: ${name}\n` +
+                    `Email: ${email}\n` +
+                    `Phone: ${phone || 'Not provided'}\n` +
+                    `Subject: ${subject}\n` +
+                    `Message: ${message}`
+                );
+                const mailtoLink = `mailto:avadhnandasana8@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+
+                // Open email client
+                window.location.href = mailtoLink;
+
+                // Show success message
+                formMessage.textContent = 'Your email client has opened. Please review and send the email to complete your submission.';
+                formMessage.classList.add('success');
+                formMessage.style.display = 'block';
+                this.reset();
+            }
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                const isActive = answer.classList.contains('active');
+                document.querySelectorAll('.faq-item p').forEach(p => p.classList.remove('active'));
+                document.querySelectorAll('.faq-item h3').forEach(h => h.classList.remove('active'));
+                if (!isActive) {
+                    answer.classList.add('active');
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

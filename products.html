@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plywood Zone - Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #f5f0e1;
+            color: #2f2f2f;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #3c2f2f;
+            color: #fff;
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: #d4a373;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #fff, #fefaf0);
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .products h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #3c2f2f;
+            margin-bottom: 2rem;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: textRevealLeft 0.8s ease-out forwards 0.2s;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-card-content {
+            padding: 1.5rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3c2f2f;
+            margin-bottom: 0.5rem;
+            transform: translateX(-20px);
+            opacity: 0;
+            animation: textRevealLeft 0.8s ease-out forwards 0.4s;
+        }
+
+        .product-card p {
+            font-size: 1rem;
+            color: #4a5568;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #3c2f2f;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links a {
+            color: #d4a373;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes textRevealLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .products h2 {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products h2 {
+                font-size: 1.5rem;
+            }
+
+            .product-card h3 {
+                font-size: 1.25rem;
+            }
+
+            .product-card p {
+                font-size: 0.9rem;
+            }
+
+            .product-card img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Plywood Zone</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="products-container">
+            <h2>Our Products</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" alt="Plywood Sheet">
+                    <div class="product-card-content">
+                        <h3>Plywood Sheet</h3>
+                        <p>High-quality plywood sheets, perfect for furniture, cabinetry, and structural applications, offering durability and versatility.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Black Board Sheet">
+                    <div class="product-card-content">
+                        <h3>Black Board Sheet</h3>
+                        <p>Sturdy black board sheets ideal for educational and creative uses, providing a smooth, writable surface.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Flush Door Sheet">
+                    <div class="product-card-content">
+                        <h3>Flush Door Sheet</h3>
+                        <p>Sleek flush door sheets for modern interiors, combining strength with a minimalist aesthetic.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="MDF Sheet">
+                    <div class="product-card-content">
+                        <h3>MDF Sheet</h3>
+                        <p>Medium-density fiberboard sheets for furniture and decorative projects, offering a smooth finish and easy customization.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" alt="Cement Sheet">
+                    <div class="product-card-content">
+                        <h3>Cement Sheet</h3>
+                        <p>Robust cement sheets for construction and exterior applications, resistant to weather and wear.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Laminate Sheet">
+                    <div class="product-card-content">
+                        <h3>Laminate Sheet</h3>
+                        <p>Stylish laminate sheets for surfaces, offering a range of designs with scratch-resistant properties.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Acrylic Sheet">
+                    <div class="product-card-content">
+                        <h3>Acrylic Sheet</h3>
+                        <p>Glossy acrylic sheets for modern decor and signage, providing clarity and impact resistance.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914" alt="ASA Sheet">
+                    <div class="product-card-content">
+                        <h3>ASA Sheet</h3>
+                        <p>Weather-resistant ASA sheets for outdoor applications, ensuring long-lasting performance and color retention.</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Louvers">
+                    <div class="product-card-content">
+                        <h3>Louvers</h3>
+                        <p>Functional and aesthetic louvers for ventilation and privacy, crafted for durability and style.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p>© 2025 Plywood Zone. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll-triggered animation for product cards
+        const productCards = document.querySelectorAll('.product-card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        productCards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>

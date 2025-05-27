@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plywood Zone - About Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: #f5f0e1;
+            color: #2f2f2f;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #3c2f2f;
+            color: #fff;
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .nav-links a:hover {
+            color: #d4a373;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #fff, #fefaf0);
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .about-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #3c2f2f;
+            margin-bottom: 1.5rem;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: textRevealLeft 0.8s ease-out forwards 0.2s;
+        }
+
+        .about p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            transform: translateX(50px);
+            opacity: 0;
+            animation: textRevealRight 0.8s ease-out forwards 0.4s;
+        }
+
+        /* Craft Section */
+        .craft {
+            padding: 4rem 1rem;
+            background-color: #f5f0e1;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 0.2s;
+        }
+
+        .craft-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .craft h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #3c2f2f;
+            margin-bottom: 1.5rem;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: textRevealLeft 0.8s ease-out forwards 0.4s;
+        }
+
+        .craft p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto;
+            transform: translateX(50px);
+            opacity: 0;
+            animation: textRevealRight 0.8s ease-out forwards 0.6s;
+        }
+
+        /* Why Plywood Zone Section */
+        .why-choose {
+            padding: 4rem 1rem;
+            background: linear-gradient(135deg, #fefaf0, #f5f0e1);
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 0.4s;
+        }
+
+        .why-choose-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .why-choose h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #3c2f2f;
+            margin-bottom: 2rem;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: textRevealLeft 0.8s ease-out forwards 0.6s;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-card {
+            perspective: 1000px;
+            height: 200px;
+        }
+
+        .why-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            background-color: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-card:hover .why-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .why-card-front,
+        .why-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .why-card-front {
+            background-color: #fff;
+        }
+
+        .why-card-back {
+            background-color: #d4a373;
+            color: #fff;
+            transform: rotateY(180deg);
+        }
+
+        .why-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3c2f2f;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-card p {
+            font-size: 1rem;
+            color: #4a5568;
+        }
+
+        .why-card-back p {
+            color: #fff;
+        }
+
+        .why-card:not(.visible) {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .why-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* Showroom Section */
+        .showroom {
+            padding: 4rem 1rem;
+            background-color: #f5f0e1;
+            text-align: center;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards 0.6s;
+        }
+
+        .showroom-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .showroom h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #3c2f2f;
+            margin-bottom: 1.5rem;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: textRevealLeft 0.8s ease-out forwards 0.8s;
+        }
+
+        .showroom p {
+            font-size: 1.2rem;
+            color: #4a5568;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            transform: translateX(50px);
+            opacity: 0;
+            animation: textRevealRight 0.8s ease-out forwards 1s;
+        }
+
+        .showroom img {
+            display: block;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .showroom img:hover {
+            transform: scale(1.05);
+            animation: none;
+        }
+
+        .showroom a {
+            display: block;
+            background-color: #d4a373;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            margin: 1rem auto;
+            max-width: 200px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .showroom a:hover {
+            background-color: #b38b59;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #3c2f2f;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links a {
+            color: #d4a373;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes textRevealLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes textRevealRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about h2,
+            .craft h2,
+            .why-choose h2,
+            .showroom h2 {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                margin-left: 1rem;
+            }
+
+            .why-choose-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about h2,
+            .craft h2,
+            .why-choose h2,
+            .showroom h2 {
+                font-size: 1.5rem;
+            }
+
+            .about p,
+            .craft p,
+            .showroom p {
+                font-size: 1rem;
+            }
+
+            .showroom img {
+                max-width: 100%;
+            }
+
+            .showroom a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Plywood Zone</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-container">
+            <h2>About Plywood Zone</h2>
+            <p>
+                Since 2010, Plywood Zone has been Morbi’s trusted name in premium plywood and furniture. Based in Sanada, we blend craftsmanship with sustainability, creating durable, stylish products that transform homes and offices. Our passion for quality drives us to deliver exceptional solutions for every project.
+            </p>
+        </div>
+    </section>
+
+    <!-- Craft Section -->
+    <section class="craft">
+        <div class="craft-container">
+            <h2>Our Craft</h2>
+            <p>
+                At Plywood Zone, every piece tells a story of artistry and precision. From carefully sourced plywood to handcrafted furniture, we combine innovation with tradition to create products that stand the test of time. Discover the beauty of wood with us.
+            </p>
+        </div>
+    </section>
+
+    <!-- Why Plywood Zone Section -->
+    <section class="why-choose">
+        <div class="why-choose-container">
+            <h2>Why Plywood Zone?</h2>
+            <div class="why-choose-grid">
+                <div class="why-card">
+                    <div class="why-card-inner">
+                        <div class="why-card-front">
+                            <h3>Unmatched Quality</h3>
+                            <p>Premium materials for lasting durability.</p>
+                        </div>
+                        <div class="why-card-back">
+                            <p>We source the finest plywood and craft furniture that withstands time, ensuring every piece meets rigorous standards.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-inner">
+                        <div class="why-card-front">
+                            <h3>Eco-Friendly</h3>
+                            <p>Sustainable practices for a greener planet.</p>
+                        </div>
+                        <div class="why-card-back">
+                            <p>Our responsibly sourced materials and eco-conscious methods reduce environmental impact without compromising quality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-card">
+                    <div class="why-card-inner">
+                        <div class="why-card-front">
+                            <h3>Customer Focus</h3>
+                            <p>Your satisfaction is our priority.</p>
+                        </div>
+                        <div class="why-card-back">
+                            <p>From personalized service to reliable support, we’re here to make your experience seamless and exceptional.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showroom Section -->
+    <section class="showroom">
+        <div class="showroom-container">
+            <h2>Visit Our Showroom</h2>
+            <p>
+                Step into our Sanada, Morbi showroom to experience our plywood and furniture collections firsthand. Open Monday-Saturday, 9:00 AM - 6:00 PM IST, our space is designed to spark inspiration.
+            </p>
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Plywood Zone Showroom">
+            <a href="contact.html">Plan Your Visit</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="products.html">Products</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p>© 2025 Plywood Zone. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll-triggered animation for why-choose cards
+        const whyCards = document.querySelectorAll('.why-card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.3 });
+
+        whyCards.forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
